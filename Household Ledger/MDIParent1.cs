@@ -21,7 +21,8 @@ namespace Household_Ledger
         {
             InitializeComponent();
 
-            oleDB = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source=../Household_Ledger.accdb;Mode=ReadWrite;");
+            oleDB = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source=F:\00_Sources\Household Ledger\Household_Ledger.accdb;Mode=ReadWrite;");
+            oleDB.Open();
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
