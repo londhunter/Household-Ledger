@@ -7,11 +7,11 @@ using System.Data.OleDb;
 
 namespace Household_Ledger.Code_Cls
 {
-    class DB_Connection
+    class OleDBConn
     {
         private static OleDbConnection OleCon;
 
-        public DB_Connection(string connStr)
+        public OleDBConn(string connStr)
         {
             OleCon = new OleDbConnection(connStr);
         }
