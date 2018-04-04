@@ -12,11 +12,11 @@ using Household_Ledger.Code_Cls;
 
 namespace Household_Ledger
 {
-    public partial class Form1 : Form
+    public partial class Common_Code : Form
     {
         private OleDbConnection oleDb;
 
-        public Form1()
+        public Common_Code()
         {
             InitializeComponent();
 
@@ -31,7 +31,7 @@ namespace Household_Ledger
 
         public void list_setting()
         {
-            string sql = "SELECT * FROM COMMON_CODE WHERE USE_YN = 'Y' ORDER BY COMM_GRP ASC, COMM_CD ASC";
+            string sql = "SELECT * FROM COMMON_CODE ORDER BY COMM_GRP ASC, COMM_CD ASC";
             DataSet ds = DataBaseHelper.OleExecuteReader(sql, oleDb);
 
             IList<Common_code> comm_codes = (from row in ds.Tables[0].AsEnumerable()
@@ -40,7 +40,8 @@ namespace Household_Ledger
                                                  Id = row.Field<int>("id"),
                                                  Comm_grp = row.Field<string>("comm_grp"),
                                                  Comm_cd = row.Field<string>("comm_cd"),
-                                                 Comm_nm = row.Field<string>("comm_nm")
+                                                 Comm_nm = row.Field<string>("comm_nm"),
+                                                 Use_yn = row.Field<string>("use_yn")
                                              }).ToList<Common_code>();
 
             listBox1.DisplayMember = "COMM_DISPLAY";
@@ -56,6 +57,14 @@ namespace Household_Ledger
             textBox1.Text = selCcode.Comm_grp.ToString();
             textBox2.Text = selCcode.Comm_cd.ToString();
             textBox3.Text = selCcode.Comm_nm.ToString();
+            if (selCcode.Use_yn.ToString() == "Y")
+            {
+                checkBox1.Checked = true;
+            }
+            else
+            {
+                checkBox1.Checked = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,12 +77,12 @@ namespace Household_Ledger
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string uSql = string.Format("UPDATE COMMON_CODE SET COMM_GRP = '{1}', COMM_CD = '{2}', COMM_NM = '{3}', UPDATE_DT = '{4}' WHERE ID = {0}",
-                label2.Text, textBox1.Text, textBox2.Text, textBox3.Text, DateTime.Now.ToString("yyyy-MM-dd"));
+            string uSql = string.Format("UPDATE COMMON_CODE SET COMM_GRP = '{1}', COMM_CD = '{2}', COMM_NM = '{3}', USE_YN = '{4}', UPDATE_DT = '{5}' WHERE ID = {0}",
+                label2.Text, textBox1.Text, textBox2.Text, textBox3.Text, ((checkBox1.Checked == true) ? "Y" : "N"), DateTime.Now.ToString("yyyy-MM-dd"));
 
             string iSql = string.Format("INSERT INTO COMMON_CODE (COMM_GRP, COMM_CD, COMM_NM, USE_YN, INSERT_DT) " +
-                "VALUES ('{0}', '{1}', '{2}', 'Y', '{3}')",
-                textBox1.Text, textBox2.Text, textBox3.Text, DateTime.Now.ToString("yyyy-MM-dd"));
+                "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')",
+                textBox1.Text, textBox2.Text, textBox3.Text, ((checkBox1.Checked == true) ? "Y" : "N"), DateTime.Now.ToString("yyyy-MM-dd"));
             int result = 0;
 
             if (label2.Text == "")
@@ -103,6 +112,11 @@ namespace Household_Ledger
         {
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            list_setting();
+        }
     }
 
     class Common_code
@@ -111,24 +125,26 @@ namespace Household_Ledger
         {
         }
 
-        public Common_code(int id, string comm_grp, string comm_cd, string comm_nm)
+        public Common_code(int id, string comm_grp, string comm_cd, string comm_nm, string use_yn)
         {
             Id = id;
             Comm_grp = comm_grp;
             Comm_cd = comm_cd;
             Comm_nm = comm_nm;
+            Use_yn = use_yn;
         }
 
         public int Id { get; set; }
         public string Comm_grp { get; set; }
         public string Comm_cd { get; set; }
         public string Comm_nm { get; set; }
+        public string Use_yn { get; set; }
 
         public string comm_display
         {
             get
             {
-                return string.Format("Group : {0} | Code : {1} | Name : {2}", (object)this.Comm_grp, (object)this.Comm_cd, (object)this.Comm_nm);
+                return string.Format("Group : {0} | Code : {1} | Name : {2} | Use : {3}", (object)this.Comm_grp, (object)this.Comm_cd, (object)this.Comm_nm, (object)this.Use_yn);
             }
         }
     }

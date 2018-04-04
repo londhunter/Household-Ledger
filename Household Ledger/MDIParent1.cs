@@ -33,7 +33,7 @@ namespace Household_Ledger
 
         private void 코드생성ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
+            Common_Code form1 = new Common_Code();
             form1.MdiParent = this;
             form1.Show();
         }

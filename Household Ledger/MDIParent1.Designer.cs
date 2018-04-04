@@ -32,15 +32,16 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.코드생성ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.자산입력ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.코드생성ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.자산입력ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.엑셀패턴설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -70,9 +71,32 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.exitToolStripMenuItem.Text = "끝내기(&X)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolsStripMenuItem_Click);
+            // 
+            // editMenu
+            // 
+            this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.코드생성ToolStripMenuItem,
+            this.자산입력ToolStripMenuItem,
+            this.엑셀패턴설정ToolStripMenuItem});
+            this.editMenu.Name = "editMenu";
+            this.editMenu.Size = new System.Drawing.Size(58, 20);
+            this.editMenu.Text = "설정(&S)";
+            // 
+            // 코드생성ToolStripMenuItem
+            // 
+            this.코드생성ToolStripMenuItem.Name = "코드생성ToolStripMenuItem";
+            this.코드생성ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.코드생성ToolStripMenuItem.Text = "코드생성";
+            this.코드생성ToolStripMenuItem.Click += new System.EventHandler(this.코드생성ToolStripMenuItem_Click);
+            // 
+            // 자산입력ToolStripMenuItem
+            // 
+            this.자산입력ToolStripMenuItem.Name = "자산입력ToolStripMenuItem";
+            this.자산입력ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.자산입력ToolStripMenuItem.Text = "자산입력";
             // 
             // helpMenu
             // 
@@ -86,12 +110,12 @@
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(133, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.aboutToolStripMenuItem.Text = "정보(&A)... ...";
             // 
             // statusStrip
@@ -111,27 +135,11 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(31, 17);
             this.toolStripStatusLabel.Text = "상태";
             // 
-            // editMenu
+            // 엑셀패턴설정ToolStripMenuItem
             // 
-            this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.코드생성ToolStripMenuItem,
-            this.자산입력ToolStripMenuItem});
-            this.editMenu.Name = "editMenu";
-            this.editMenu.Size = new System.Drawing.Size(62, 20);
-            this.editMenu.Text = "메뉴(&M)";
-            // 
-            // 코드생성ToolStripMenuItem
-            // 
-            this.코드생성ToolStripMenuItem.Name = "코드생성ToolStripMenuItem";
-            this.코드생성ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.코드생성ToolStripMenuItem.Text = "코드생성";
-            this.코드생성ToolStripMenuItem.Click += new System.EventHandler(this.코드생성ToolStripMenuItem_Click);
-            // 
-            // 자산입력ToolStripMenuItem
-            // 
-            this.자산입력ToolStripMenuItem.Name = "자산입력ToolStripMenuItem";
-            this.자산입력ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.자산입력ToolStripMenuItem.Text = "자산입력";
+            this.엑셀패턴설정ToolStripMenuItem.Name = "엑셀패턴설정ToolStripMenuItem";
+            this.엑셀패턴설정ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.엑셀패턴설정ToolStripMenuItem.Text = "엑셀 패턴설정";
             // 
             // MDIParent1
             // 
@@ -167,6 +175,7 @@
         private System.Windows.Forms.ToolStripMenuItem editMenu;
         private System.Windows.Forms.ToolStripMenuItem 코드생성ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 자산입력ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 엑셀패턴설정ToolStripMenuItem;
     }
 }
 
